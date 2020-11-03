@@ -27,7 +27,7 @@
         type:String,
         required:true,
         validate(value) {
-            if(value.length<6 || value.toLowerCase().includes('password')) throw new Error('Password is invalid')
+            if(value.length<6 || value.toLowerCase().includes('password')) throw new Error('Password is too short! Must be 6 or more characters')
         }
     },
 

@@ -5,6 +5,8 @@ const auth = require('../middleware/auth')
 const multer = require('multer')
 const sharp = require('sharp')
 const {sendWelcomeEmail,sendFarewellEmail} = require('../emails/account')
+const hbs = require('hbs')
+
 
 router.post('/users', async (req,res)=> {
 
@@ -12,7 +14,7 @@ router.post('/users', async (req,res)=> {
     try {
         
         await user.save()
-        sendWelcomeEmail(user.email,user.name)
+       // sendWelcomeEmail(user.email,user.name)
 
         const token = await user.generateAuthToken()
         res.status(201).send({user,token})
@@ -28,7 +30,7 @@ router.post('/users', async (req,res)=> {
     try {
        const user = await User.findByCredentials(req.body.email, req.body.password)
        const token = await user.generateAuthToken()
-
+      
        res.send({user,token})
 
     }
@@ -45,6 +47,7 @@ router.post('/users', async (req,res)=> {
            return token.token!==req.token})
 
        await req.user.save()
+      
        res.send()
       
 

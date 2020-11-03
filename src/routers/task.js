@@ -15,7 +15,7 @@ router.post('/tasks', auth, async (req,res)=> {
  }) 
  
  router.get('/tasks', auth, async (req,res)=> {
-    
+   
     const match = {}
     if(req.query.completed) {
         match.completed=req.query.completed==='true'
@@ -25,6 +25,7 @@ router.post('/tasks', auth, async (req,res)=> {
     if(req.query.sortBy) {
         const commands=req.query.sortBy.split(':')
         sort[commands[0]] = commands[1]==='desc' ? -1 : 1
+        //sort[commands[2]] = commands[3]==='byDate' ? -1 : 1
     }
 
     try {
@@ -37,6 +38,7 @@ router.post('/tasks', auth, async (req,res)=> {
         } 
         , match}).execPopulate()
         res.send(req.user.tasks)
+        console.log('REQUEST')
     }
   catch(e) {
     res.status(500).send()
