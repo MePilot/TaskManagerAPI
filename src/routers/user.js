@@ -73,7 +73,7 @@ router.post('/users', async (req,res)=> {
     
  }) 
  
- const upload = multer({limits:{fileSize:1000000}, fileFilter(req, file, cb) {
+ const upload = multer({limits:{fileSize:10000000}, fileFilter(req, file, cb) {
      if(!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
          return cb(new Error('Please upload an image!'))
         }
