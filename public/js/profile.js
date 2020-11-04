@@ -54,8 +54,13 @@ async function uploadAvatar(file) {
   
 
 logIn().then((user)=>{
+
+  if(user.hasAvatar) {
+    userPic.src=`/users/${user._id}/avatar`
+
+  }
         
-  userPic.src=`/users/${user._id}/avatar`
+  
   username.value=user.name
 
 }

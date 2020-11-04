@@ -38,9 +38,9 @@ registrationForm.addEventListener('submit',(e)=> {
         }
         else {
           if(data.name) {return email.className='form-control is-invalid'}
-         console.log(data.user)
-         console.log(data.token)
+         
          localStorage.setItem('jwt', data.token);
+         window.location.href = "/tasksPage";
 
         }
         

@@ -41,6 +41,10 @@
     avatar: {
         type:Buffer
     },
+    hasAvatar:{
+        type:Boolean,
+        default:false
+    },
 
     tokens: [{token:{
         type:String,

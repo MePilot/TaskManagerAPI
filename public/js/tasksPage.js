@@ -3,7 +3,7 @@ const taskBoard = document.getElementById("taskBoard")
 
 const template = document.getElementById("task")
 
-let taskText
+
 showTasks()
 
  async function showTasks() {
@@ -25,13 +25,13 @@ showTasks()
       let clone = template.content.cloneNode(true);
       //clone.id=taskCard.id
       
-      taskText = clone.getElementById('taskText')
+      const taskText = clone.getElementById('taskText')
       const taskStatus = clone.getElementById("taskStatus")
       const deleteTask= clone.getElementById("deleteTask")
       const editTask= clone.getElementById("editTask")
       
       taskText.innerHTML=taskCard.task.name
-      taskText.id=taskCard.id
+      //taskText.id=taskCard.id
       taskStatus.innerHTML=taskCard.task.completed
       
       deleteTask.addEventListener('click', async function () {

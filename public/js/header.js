@@ -4,7 +4,7 @@ const navbar = document.getElementById('navbarCollapse')
 const logRes = document.getElementById("logRes")
 let loggedIn = document.getElementById("loggedIn");
 let uName
-
+//localStorage.removeItem('jwt')
 
 if(localStorage.getItem('jwt')) {
     
@@ -28,11 +28,11 @@ if(localStorage.getItem('jwt')) {
     img_user.style.marginRight = "10px" 
     
     logIn().then((user)=>{
-        
-        
-        img_user.src=`/users/${user._id}/avatar`
+
+        if(user.hasAvatar) {
+            img_user.src=`/users/${user._id}/avatar`
+        }
         my.innerHTML+=user.name
-       
     }
     )
 }
