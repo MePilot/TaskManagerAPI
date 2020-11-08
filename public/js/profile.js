@@ -60,7 +60,7 @@ async function uploadAvatar2(file) {
 
 // listen for `upload.load` event
 xhr.upload.onload = () => {
-    console.log(`The upload is completed: ${xhr.status} ${xhr.response}`);
+  progressBar.style.visibility=false
     location.reload()
 };
 
