@@ -1,16 +1,17 @@
 
 console.log('Working')
 
-
+let total
 const registrationForm = document.querySelector('form')
 
 const username = document.getElementById('username')
 const password = document.getElementById('password')
 const password2 = document.getElementById('password2')
 const userPic = document.getElementById('userPic')
-const fileSelect = document.getElementById("fileSelect"),
-fileElem = document.getElementById("fileElem");
-const errorLbl = document.getElementById("error");
+
+const fileSelect = document.getElementById("fileSelect")
+fileElem = document.getElementById("fileElem")
+const errorLbl = document.getElementById("error")
 
 fileSelect.addEventListener("click", function (e) {
 if (fileElem) {
@@ -24,7 +25,7 @@ function handleFiles() {
   const formData = new FormData();
   formData.append('avatar',this.files[0]);
   
-  uploadAvatar(formData)
+  uploadAvatar2(formData)
 
 }
 async function uploadAvatar(file) {
@@ -49,6 +50,47 @@ async function uploadAvatar(file) {
     location.reload()
 
   }
+}
+
+async function uploadAvatar2(file) {
+
+  const xhr = new XMLHttpRequest();
+  const progressBar = document.getElementById('progressBar')
+  progressBar.style.visibility=true
+
+// listen for `upload.load` event
+xhr.upload.onload = () => {
+    console.log(`The upload is completed: ${xhr.status} ${xhr.response}`);
+    location.reload()
+};
+
+// listen for `upload.error` event
+xhr.upload.onerror = () => {
+    console.error('Upload failed.');
+}
+
+// listen for `upload.abort` event
+xhr.upload.onabort = () => {
+    console.error('Upload cancelled.');
+}
+
+// listen for `progress` event
+xhr.upload.onprogress = (event) => {
+    // event.loaded returns how many bytes are downloaded
+    // event.total returns the total number of bytes
+    // event.total is only available if server sends `Content-Length` header
+    progressBar.value=event.loaded/event.total*100
+    //console.log(`Uploaded ${event.loaded} of ${event.total} bytes`);
+}
+
+// open request
+xhr.open('POST', '/users/me/avatar',true);
+xhr.setRequestHeader('Authorization', `${localStorage.getItem('jwt')}`)
+
+
+// send request
+xhr.send(file);
+
 }
 
   
