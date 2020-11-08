@@ -90,7 +90,7 @@ router.post('/users/me/avatar', auth, upload.single('avatar'), async (req,res)=>
         res.status(200).send()
     
  },(error,req,res,next)=> {
-     res.status(400).send({error:error.message})
+     res.status(400).send(error.message)
 
  })
  

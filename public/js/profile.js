@@ -56,22 +56,33 @@ async function uploadAvatar2(file) {
 
   const xhr = new XMLHttpRequest();
   const progressBar = document.getElementById('progressBar')
-  progressBar.style.visibility=true
+  progressBar.style.visibility='visible'
 
 // listen for `upload.load` event
 xhr.upload.onload = () => {
-  progressBar.style.visibility=false
-    location.reload()
+  progressBar.style.visibility='hidden'
+   // console.log('fsdfsdfsdffs')
 };
+
 
 // listen for `upload.error` event
 xhr.upload.onerror = () => {
-    console.error('Upload failed.');
+  progressBar.style.visibility='hidden'
+  //console.log('fsdfsdfsdffs')
 }
-
+xhr.onreadystatechange = function() {
+  if (this.status == 400) {
+    errorLbl.style.display="block"
+    errorLbl.innerHTML=this.responseText;
+    
+      
+ }
+ else if (this.readyState==4) location.reload()
+ 
+};
 // listen for `upload.abort` event
 xhr.upload.onabort = () => {
-    console.error('Upload cancelled.');
+  progressBar.style.visibility='hidden'
 }
 
 // listen for `progress` event
