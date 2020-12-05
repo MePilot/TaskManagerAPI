@@ -2,37 +2,69 @@
 const taskBoard = document.getElementById("taskBoard")
 
 const template = document.getElementById("task")
+let taskCards=[]
+function selectTask () {
+
+}
+
 
 
 showTasks()
 
  async function showTasks() {
-  
+  let counter=0
   try {
     let tasks=await loadTasks('?sortBy=createdAt:desc')
    
-    let taskCards=[]
-    let counter=0
-    
-    
     tasks.forEach(task => {
-      taskCards.push({id:`task${counter++}`,task})
+      let clone = template.content.cloneNode(true);
+      const card = {id:`task${counter++}`, task, selected:false}
+      taskCards.push(card)
+
+      clone.children[0].id=card.id
+      
+      const selectedTask= clone.getElementById("cardSelect2")
+      const taskText = clone.getElementById('text2')
+      taskText.innerHTML = task.name
+      selectedTask.addEventListener('click', function (parent) {
+        card.selected = selectedTask.checked
+        console.log(card.selected)
+      
+      }
+
+        )
+      taskBoard.appendChild(clone);
+     
     });
      
     taskCards.forEach(taskCard => {
+     
       
      
-      let clone = template.content.cloneNode(true);
+      //let clone = template.content.cloneNode(true);
+      
+
+      
+
+
+
+
+
+
+
+
+
+
       //clone.id=taskCard.id
+      /*
+      //const taskText = clone.getElementById('taskText')
+      //const taskStatus = clone.getElementById("taskStatus")
+      //const deleteTask= clone.getElementById("deleteTask")
+      //const editTask= clone.getElementById("editTask")
       
-      const taskText = clone.getElementById('taskText')
-      const taskStatus = clone.getElementById("taskStatus")
-      const deleteTask= clone.getElementById("deleteTask")
-      const editTask= clone.getElementById("editTask")
-      
-      taskText.innerHTML=taskCard.task.name
+      //taskText.innerHTML=taskCard.task.name
       //taskText.id=taskCard.id
-      taskStatus.innerHTML=taskCard.task.completed
+      //taskStatus.innerHTML=taskCard.task.completed
       
       deleteTask.addEventListener('click', async function () {
 
@@ -85,7 +117,9 @@ showTasks()
         }
 
       })
-      taskBoard.appendChild(clone);
+      */ 
+     
+     
     });
 
   }
@@ -95,8 +129,6 @@ showTasks()
   
   
 }
-
-
 
 async function loadTasks(params) {
 
@@ -131,5 +163,31 @@ async function newTask() {
 
   }
  
+}
+
+ function deleteTask() {
+  
+  taskCards.forEach(async taskCard => {
+    if(taskCard.selected) {
+      try {
+        await fetch(`/tasks/${taskCard.task._id}`, {
+          headers: {"Content-Type": "application/json; charset=utf-8", Authorization: localStorage.getItem('jwt')},
+          method: 'DELETE'
+      })
+      
+       
+        let card = document.getElementById(`${taskCard.id}`)
+        console.log(`${taskCard.id}`)
+       card.remove()
+        location.reload()
+      }
+      catch(e) {
+        console.log(e)
+      }
+
+
+
+    }
+  })
 }
 

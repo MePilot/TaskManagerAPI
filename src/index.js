@@ -12,6 +12,7 @@ require('./db/mongoose')
 const userRouter = require('./routers/user')
 const taskRouter = require('./routers/task')
 const pagesRouter = require('./routers/pages')
+const { diskStorage } = require('multer')
 const app = express()
 
 app.set('view engine','hbs')

@@ -10,6 +10,11 @@ router.get('',(req,res)=>{
     res.render('tasks')
 
 })
+router.get('/sudoku',(req,res)=>{
+   
+    res.render('sudoku')
+
+})
 //router.get('/auth',auth2,(req,res)=>{
     //if(res.logged===true) {hbs.registerHelper('loginBar',()=>{return 'headerLogged'})}
     
