@@ -12,8 +12,8 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </head>
-<body style="background-image: url('Bulletin_Board.svg'); background-repeat: no-repeat; background-attachment: fixed;">
-    
+<body style="background-color:grey">
+   <!-- <body style="background-image: url('Bulletin_Board.svg'); background-repeat: no-repeat; background-attachment: fixed;"></body>-->
    {{>header}}
     <br>
    
@@ -21,23 +21,22 @@
         <div class="d-flex justify-content-start flex-wrap" id="taskBoard" >
            
             <template id="task">
-               
-               <div class="d-lg-none" style="padding:15% 0px 0px 30px; width:80%; height:150px; background-image: url('note.png'); background-repeat: no-repeat; background-size:cover; margin:10%;">
               
-               <div class="text" id="text1" style="width:80%; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient:vertical;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur venenatis blandit. Praesent vehicula, libero non pretium vulputate, lacus arcu facilisis lectus, sed feugiat tellus nulla eu dolor. Nulla porta bibendum lectus quis euismod. Aliquam volutpat ultricies porttitor. Cras risus nisi, accumsan vel cursus ut, sollicitudin vitae dolor. Fusce scelerisque eleifend lectus in bibendum. Suspendisse lacinia egestas felis a volutpat.
+               <div class="d-lg-none" style="padding:15% 0px 0px 30px; width:80%; height:150px; background-image: url('note.png'); background-repeat: no-repeat; background-size:cover; margin:10%;">
+                      <div class="text" style="width:80%; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient:vertical;"></div>
+                     <label style="width: 100%;"><input type="checkbox" class="cardSelect"/></label>
 
-               </div>
-               <label style="width: 100%;"><input type="checkbox" id="cardSelect1"/></label>
-
-               
-            </div>
-             <div class="d-none d-lg-block" style="padding:3% 0px 0px 1%; width:200px; height:200px; background-image: url('note.png'); background-repeat: no-repeat; background-size:cover; margin:1% 0% 1% 1%;">
-               <div class="text" id="text2" style="width:80%; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient:vertical;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur venenatis blandit. Praesent vehicula, libero non pretium vulputate, lacus arcu facilisis lectus, sed feugiat tellus nulla eu dolor. Nulla porta bibendum lectus quis euismod. Aliquam volutpat ultricies porttitor. Cras risus nisi, accumsan vel cursus ut, sollicitudin vitae dolor. Fusce scelerisque eleifend lectus in bibendum. Suspendisse lacinia egestas felis a volutpat.
-                   
-               </div>
-               <label style="width: 100%;"><input type="checkbox" id="cardSelect2"/></label>
+                </div>
+                 
                 
-            </div>
+               
+             <div class="d-none d-lg-block" style="padding:3% 0px 0px 1%; width:200px; height:200px; background-image: url('note.png'); background-repeat: no-repeat; background-size:cover; margin:1% 0% 1% 1%;">
+               <div class="text" style="width:80%; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient:vertical;"></div>
+                   <label style="width: 100%;"><input type="checkbox" class="cardSelect"/></label>
+               </div>
+               
+                
+            
             </template>
             </div>
 
