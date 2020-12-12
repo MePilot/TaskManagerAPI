@@ -1,9 +1,12 @@
 
 const taskBoard = document.getElementById("taskBoard")
-
+const board = document.getElementById("board")
 const template = document.getElementById("task")
 
+const templateBig = document.getElementById("bignotetemp")
+
 console.log(template)
+console.log(templateBig)
 let taskCards=[]
 function selectTask () {
 
@@ -35,11 +38,30 @@ showTasks()
      taskText[1].innerHTML = task.name
 
      
-
+     clone.children[0].addEventListener('click', function (parent) {
+      let clone = templateBig.content.cloneNode(true);
+      let div = clone.querySelector('[id="bignote"]')
+     
+      div.style.left = `${parent.srcElement.style.left}px`;
+      div.style.top = `${parent.srcElement.style.top}px`;
+      console.log(parent)
+      document.body.appendChild(clone);
+    })
+    clone.children[1].addEventListener('click', function (parent) {
+      
+      let clone = templateBig.content.cloneNode(true);
+      let div = clone.querySelector('[id="bignote"]')
+     
+      div.style.left = `${parent.srcElement.style.left}px`;
+      div.style.top = `${parent.srcElement.style.top}px`;
+      console.log(parent)
+      document.body.appendChild(clone);
+    })
 
       selectedTask[0].addEventListener('click', function (parent) {
        
           card.selected = selectedTask[0].checked
+         // console.log('clicked')
         
         })
         selectedTask[1].addEventListener('click', function (parent) {
@@ -47,44 +69,44 @@ showTasks()
             card.selected = selectedTask[1].checked
           
           })
+          /*
+          selectedTask[0].addEventListener('click', async function (parent) {
+            
+            // let child = this.parentElement.parentElement.children[0];
+            if(parent.disabled) {
+              console.log('enabled')
+             parent.disabled=false
+       
+            }
+            else {
+             parent.disabled=true
+             console.log('save')
+               try {
+                 await fetch(`/tasks/${card.task._id}`, {
+                   headers: {"Content-Type": "application/json; charset=utf-8", Authorization: localStorage.getItem('jwt')},
+                   method: 'PATCH',
+                   body: JSON.stringify({
+                   name: taskText[0].value
+                     
+                 })
+               })
+               
+                
+                 
+               }
+               catch(e) {
+                 console.log(e)
+               }
+             }
+           })*/
+          //selectedTask[1].addEventListener('click', edit (parent))
           
-      taskBoard.appendChild(clone);
+          taskBoard.appendChild(clone);
      
     });
      
-    
-    let edit = async function () {
-     // let child = this.parentElement.parentElement.children[0];
-      if(this.innerHTML==="Edit") {
-        
-        child.disabled=false
-        this.innerHTML="Save"
-      }
-      
-        
-      else {
-        this.innerHTML="Edit"
-        child.disabled=true
-        try {
-          await fetch(`/tasks/${taskCard.task._id}`, {
-            headers: {"Content-Type": "application/json; charset=utf-8", Authorization: localStorage.getItem('jwt')},
-            method: 'PATCH',
-            body: JSON.stringify({
-            name: taskText.value
-              
-          })
-        })
-        
-          console.log(taskCard.task._id)
-          
-          
-          taskText.disabled=true
-        }
-        catch(e) {
-          console.log(e)
-        }
-      }
-    }
+    let flag=false
+    //const edit = 
      
       //let clone = template.content.cloneNode(true);
       

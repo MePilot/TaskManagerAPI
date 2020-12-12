@@ -3,7 +3,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Sudoku</title>
+    <title>Calculator</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel='stylesheet' type='text/css' media='screen' href='css/sudoku.css'>
@@ -13,10 +13,14 @@
 
 </head>
 <body style="height: 100%;">
+     {{>header}}
     <div class="h-100 row align-items-center">
         <div class="container"> 
-            <h1 id = "win" style="text-align: center;">Good Luck</h1>
-            <div id="numbers" class="row" style="margin: auto;">
+            <h1 id = "win" style="text-align: center;"></h1>
+            <div class="row" style="margin: auto;">
+                <table id="numbers">
+
+                </table>
 
             </div>
             <div class="row">
@@ -44,7 +48,6 @@
                 </div>
             </div>
             
-            
             <div  class="d-flex justify-content-center" style="padding-top: 5px;">
                 <button type="button" class="m-2 btn btn-danger" onclick="runGame()">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-repeat" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +67,7 @@
 
 </body>
     <script type="text/javascript" src="js/sudoku.js"></script>
-
+   
 </html>
 
 
