@@ -1,0 +1,75 @@
+
+
+  #opened {
+    position: relative;
+    background-color: aliceblue;
+    
+  }
+  
+  .box {
+    width: 200px;
+    display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  }
+  .textReadOnly {
+    width: 100%;
+    
+    display: -webkit-box;
+    white-space: pre;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 5%;
+  }
+  .textEditable {
+    height: 62%;
+    display: none; 
+    border: none; 
+    overflow: auto; 
+    outline: none; 
+    -webkit-box-shadow: none; 
+    -moz-box-shadow: none; 
+    box-shadow: none; 
+    resize: none; 
+    background-color: transparent;
+    margin: 5%;
+   
+  }
+  .noteControls {
+    display:none;
+    position: absolute; 
+    bottom: 0; 
+    padding: 5%;
+    
+    
+    
+  }
+  .reminder {
+    display:block;
+    position: absolute; 
+    bottom: 0; 
+    width: 13%; 
+    right: 0;
+    margin: 0 5% 5% 0;
+    opacity:1;
+    }
+    
+    #flatpickr {
+     display: none;
+    position: absolute; 
+    bottom: 0; 
+    margin: 0% 5% 5% 5%;
+    
+     
+      }
+      .flatpickr-input {
+       
+       position: absolute; 
+       bottom: 0; 
+       margin: 0% 5% 5% 5%;
+       
+        
+         }

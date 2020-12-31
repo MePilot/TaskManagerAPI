@@ -12,6 +12,10 @@
         type:Boolean,
         default:false
     },
+    remindDate:{
+        type:Date,
+        default:null
+    },
     owner: {
         type:mongoose.Schema.Types.ObjectId,
         required:true,
